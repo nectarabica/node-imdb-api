@@ -185,6 +185,9 @@ export function getReq(req: MovieRequest, cb: (err: Error, data: Movie) => any) 
         qs["t"] = req.name;
     } else if (req.id) {
         qs["i"] = req.id;
+    } 
+    if (req.year) {
+        qs["y"] = req.year;
     }
 
     rp({"qs": qs, url: omdbapi, json: true}).then(function(data: OmdbMovie | OmdbError) {
